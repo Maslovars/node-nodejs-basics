@@ -1,18 +1,23 @@
-
 import { readFile } from 'fs/promises';
 import { createHash } from 'crypto';
+import path from 'path';
 
 const calculateHash = async () => {
-    const fileContent = async (path) => {
+    const fileContent = async (filePath) => {
         try {
-            const content = await readFile(path);
+            const content = await readFile(filePath);
             return content;
         } catch (err) {
             return false;
         }
-    }
-    const path = './src/hash/files/fileToCalculateHashFor.txt';
-    const fileToHash = await fileContent(path);
+    };
+    const filePath = path.join(
+        'src',
+        'hash',
+        'files',
+        'fileToCalculateHashFor.txt',
+    );
+    const fileToHash = await fileContent(filePath);
     const hash = createHash('sha256');
     hash.update(fileToHash);
     console.log(hash.digest('hex'));

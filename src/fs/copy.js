@@ -1,10 +1,11 @@
 import { cp } from 'fs/promises';
+import path from 'path';
 
 const copy = async () => {
     try {
-        const path = './src/fs/files/';
-        const newPath = './src/fs/files_copy/';
-        await cp(path, newPath, {
+        const sourcePath = path.join('src', 'fs', 'files');
+        const destinationPath = path.join('src', 'fs', 'files_copy');
+        await cp(sourcePath, destinationPath, {
             force: false,
             errorOnExist: true,
             recursive: true,

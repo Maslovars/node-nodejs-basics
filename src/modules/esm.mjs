@@ -2,7 +2,7 @@ import { fileURLToPath } from 'url';
 import { release, version } from 'os';
 import { createServer as createServerHttp } from 'http';
 import path from 'path';
-import './files/c.js';
+import './files/c.cjs';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
